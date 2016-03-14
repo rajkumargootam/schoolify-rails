@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :klasses
+  get 'sections/index'
+
+  resources :klasses do
+    resources :sections
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

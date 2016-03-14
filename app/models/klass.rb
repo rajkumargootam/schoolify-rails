@@ -9,5 +9,7 @@
 #
 
 class Klass < ActiveRecord::Base
-  validates :name, presence: true 
+  has_many :sections
+  
+  validates :name, presence: true
 end
