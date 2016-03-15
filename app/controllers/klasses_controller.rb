@@ -1,8 +1,8 @@
 class KlassesController < ApplicationController
   def index
     @klasses = Klass.all
-    @new_klass = Klass.first
-    @new_section = Section.new
+    @new_klass = Klass.new
+    
   end
 
   def create
