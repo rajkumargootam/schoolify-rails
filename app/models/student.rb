@@ -23,7 +23,7 @@ class Student < ActiveRecord::Base
    FEMALE = {code: 2, label: "Female"}
 
    def self.label(code)
-     if code == MALE[:code]
+     if code.to_i == MALE[:code]
        return MALE[:label]
      else
        return FEMALE[:label]
