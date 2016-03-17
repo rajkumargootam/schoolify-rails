@@ -19,10 +19,10 @@
 
 class Student < ActiveRecord::Base
   module Gender
-   MALE   = {code: 1, label: "Male"}
-   FEMALE = {code: 2, label: "Female"}
+    MALE   = {code: 1, label: "Male"}
+    FEMALE = {code: 2, label: "Female"}
 
-   def self.label(code)
+    def self.label(code)
      if code.to_i == MALE[:code]
        return MALE[:label]
      else
@@ -30,11 +30,23 @@ class Student < ActiveRecord::Base
      end
     end
 
-   def self.all
+    def self.all
      [MALE, FEMALE].collect{|hsh| OpenStruct.new(hsh)}
-   end
+    end
   end
 
   belongs_to :section
   belongs_to :house
+
+  before_create :set_rollnumber
+
+private
+  def set_rollnumber
+    students = self.section.students
+    if students.count <= 1
+      self.roll_number = 1
+    else
+      self.roll_number = students[-2].roll_number.to_i + 1
+    end
+  end
 end
