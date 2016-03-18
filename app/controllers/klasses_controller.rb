@@ -2,7 +2,7 @@ class KlassesController < ApplicationController
   def index
     @klasses = Klass.all
     @new_klass = Klass.new
-    
+
   end
 
   def create
