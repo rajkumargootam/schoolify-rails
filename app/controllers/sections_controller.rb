@@ -5,7 +5,7 @@ class SectionsController < ApplicationController
 
 
   def index
-    @sections = @klass.sections
+    @sections = @klass.sections.includes(students: [:house])
   end
 
   def new

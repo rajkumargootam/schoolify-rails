@@ -1,1 +1,7 @@
-<%= link_to klass.name, klass_sections_path(klass), class: "list-group-item klass_item", id:dom_id(klass),remote: true%>
+<%= link_to(klass_sections_path(klass),
+      class: "list-group-item klass_item",
+       id:dom_id(klass),
+       remote: true) do
+    raw(klass.name + house_counts_tag(klass.houses_count))
+      end
+  %>
