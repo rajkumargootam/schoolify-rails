@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendance_registries/index'
+
   get 'students/index'
 
   get 'sections/index'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   resources :klasses do
     resources :sections do
       resources :students
+      resources :attendance_registries
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

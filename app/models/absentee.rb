@@ -1,0 +1,27 @@
+class Absentee < ActiveRecord::Base
+  belongs_to :student
+  belongs_to :attendance_registry
+
+
+  after_create :send_absent_notification!
+  after_destroy :send_present_notification!
+
+private
+  def send_absent_notification!
+    student = self.student
+    msg = ""
+    msg += "Dear Guardian, "
+    msg += "FYI, your ward, #{student.name}, has not come to the school today."
+    msg += "Regards, Code Astra Talent School"
+    MessengerService.new.send_sms("+18325326571", student.phone, msg)
+  end
+
+  def send_present_notification!
+    student = self.student
+    msg = ""
+    msg += "Dear Guardian, "
+    msg += "FYI, your ward, #{student.name}, is at the school now."
+    msg += "Regards, Code Astra Talent School"
+    MessengerService.new.send_sms("+18325326571", student.phone, msg)
+  end
+end

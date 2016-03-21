@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312141808) do
+ActiveRecord::Schema.define(version: 20160321121608) do
+
+  create_table "absentees", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "attendance_registry_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "absentees", ["attendance_registry_id"], name: "index_absentees_on_attendance_registry_id"
+  add_index "absentees", ["student_id"], name: "index_absentees_on_student_id"
+
+  create_table "attendance_registries", force: :cascade do |t|
+    t.integer  "section_id"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attendance_registries", ["section_id"], name: "index_attendance_registries_on_section_id"
 
   create_table "houses", force: :cascade do |t|
     t.string   "name"

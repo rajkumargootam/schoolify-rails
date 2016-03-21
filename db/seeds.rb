@@ -14,9 +14,8 @@ def seed_klass(num)
   print "."
 end
 
-def seed_Section(klass, name)
-  Section.find_or_create_by(klass_id: klass.id, name: name)
-  # Klass.section.find_or_create_by(name: name)
+def seed_section(klass, name)
+  klass.sections.find_or_create_by(name: name)
   print "."
 end
 
@@ -52,7 +51,7 @@ Klass.all.each do |klass|
   sections = %w[A B C]
   (0..(1 + rand(2))).each do |i|
     name = sections[i]
-    seed_Section(klass, name)
+    seed_section(klass, name)
   end
 end
 puts "  Done."

@@ -1,0 +1,19 @@
+#attendants-list {
+  .attendant_item {
+    .fa-check-square-o {
+      display: inline-block;
+    }
+    .fa-square-o {
+      display: none;
+    }
+
+    &.absent {
+      .fa-check-square-o {
+        display: none;
+      }
+      .fa-square-o {
+        display: inline-block;
+      }
+    }
+  }
+}

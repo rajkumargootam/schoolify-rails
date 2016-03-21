@@ -42,6 +42,8 @@ class Student < ActiveRecord::Base
 
 private
   def set_rollnumber
+    return if self.roll_number
+
     students = self.section.students
     if students.count <= 1
       self.roll_number = 1
