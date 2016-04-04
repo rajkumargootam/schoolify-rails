@@ -1,7 +1,6 @@
 <% students.each do |student| %>
   <%=
-    link_to("#",
-            class: "list-group-item attendant_item #{@absent_student_ids.include?(student.id) ? 'absent' : ''}",
+    link_to("#",class: "list-group-item attendant_item #{@absent_student_ids.include?(student.id) ? 'absent' : ''}",
             id: dom_id(student),
             remote: true,
             data: {student_id: student.id}) do

@@ -17,6 +17,7 @@ class AttendanceRegistriesController < ApplicationController
     render :create
   end
 
+  
 private
   def fetch_section
     @klass = Klass.find(params[:klass_id])
